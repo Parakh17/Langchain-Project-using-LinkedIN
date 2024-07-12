@@ -21,4 +21,28 @@ def lookup(name:str) -> str:
         
     """
     
-    prompt_template = PromptTemplate
+    prompt_template = PromptTemplate(input_variables=["name_of_person"], template=template)
+    
+    tools_for_agent=[
+        Tool(
+            name="Crawl Google for LinekdIn profile page",
+            func="?",
+            description="useful for when you need to get the LinkedIn Page URL"
+        )
+    ]
+    
+    react_prompt = hub.pull("hwchase17/react")
+    
+    agent=create_react_agent(llm=llm, tools=tools_for_agent,
+                             prompt=react_prompt)
+
+    agent_executer=AgentExecutor(agent=agent,tools=tools_for_agent,verbose=True)
+    
+    result=agent_executer.invoke(
+        input={"input":prompt_template.format_prompt(name_of_person=name)}
+    )
+    
+    
+    linkedin_profile_url=result["output"]
+    
+    return linkedin_profile_url
