@@ -10,5 +10,3 @@ def get_profile_url_tavily(name:str):
     return res[0]["url"]
 
 
-x = get_profile_url_tavily("Salman")
-print(x)
