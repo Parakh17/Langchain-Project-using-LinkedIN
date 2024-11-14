@@ -25,7 +25,7 @@ if __name__ == "__main__":
     )
     
     
-    llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo")
+    llm = ChatOpenAI(temperature=0, model="gpt-4o-mini")
     
     chain = LLMChain(llm =llm, prompt = summary_prompt_template)
     
