@@ -13,7 +13,7 @@ from langchain import hub #to download prompts from the community
 
 
 #from tool.tools import get_profile_url_tavily
-from tool.tools import get_profile_url_tavily
+from .tools import get_profile_url_tavily
 
 
 
@@ -64,7 +64,7 @@ def lookup(name:str) -> str:
     
     return linkedin_profile_url
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     
-    linkedin_url = lookup("Parakh Singhal")
-    print(linkedin_url)
+#     linkedin_url = lookup("Parakh Singhal Cognizant")
+#     print(linkedin_url)
